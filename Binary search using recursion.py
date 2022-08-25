@@ -1,34 +1,24 @@
-#Function which return all the unique palindromes from a given string
+#Program in python for binary search using recursion which returns index of the key needed.
+def binary_search(my_list, low, high, key):
 
-class unique_palindrome: #Initializing class
-    
-    def __init__(self,string):
-        self.my_str=string
-        self.unique_set=set()
-        
-    def substring(self): #Function to find unique palindrome of given string
-        i = 0
-        while i <len(self.my_str):
-            j = len(self.my_str) - 1
-            while (j>i):
-                if self.my_str[i] == self.my_str[j]:
-                    if self.is_palindrome(i,j):
-                        self.unique_set.add(self.my_str[i:j+1])
-                        i = (i+j)//2
-                        break
-                j -= 1
-            i+=1
-            
-    def is_palindrome(self,start,end): #Function to check palindrome
-        while(start<=end):
-            if(self.my_str[start]==self.my_str[end]):
-                start+=1
-                end-=1
-            else:
-                return False
-        return True
-        
-string="abbabab" #Main
-result=unique_palindrome(string)
-result.substring()
-print("The unique palindromes of the given string:", result.unique_set) #Output
+	
+	if high >= low: 
+
+		mid = (high + low)//2
+		
+		if my_list[mid] == key:
+			return mid #If key is in middle
+			
+		elif my_list[mid] > key:
+			return binary_search(my_list, low, mid - 1, key) #If key is small than mid it will be in left side of the list.
+			
+		else:
+			return binary_search(my_list, mid + 1, high, key) #Else key can only be in the right side of the list.
+
+	else:
+		return "N/A" #If the value is not in the list.
+
+nums=[7,16,23,44,56]
+key=16
+
+print("Element is present at index", binary_search(nums, 0, len(nums)-1, key))
