@@ -12,11 +12,9 @@ Deadline = [int(x) for x in Deadline]
 J_P_D = [(Job[i],Profit[i],Deadline[i]) for i in range(0,len(Job))]
 print(J_P_D)
 
-
 sort = sorted(J_P_D,key=lambda j: j[2],reverse=True)
 n=sort[0][2]
 print(n)
-
 
 def jobSequencing(J_P_D,max_deadline):
     sorted(J_P_D,key=lambda j: j[2],reverse=True)
@@ -30,5 +28,4 @@ def jobSequencing(J_P_D,max_deadline):
          res.append(max_profit)
 
     return res
-
 print(jobSequencing(J_P_D,n))
